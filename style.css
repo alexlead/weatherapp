@@ -1,0 +1,1 @@
+input[name=location]~ul{display:none}input[name=location]:focus~ul{display:block}

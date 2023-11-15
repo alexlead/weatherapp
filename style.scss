@@ -1,0 +1,16 @@
+
+    input[name="location"]{
+
+               ~ ul {
+                display: none;
+               }
+        &:focus{
+
+               ~ ul {
+                    display: block;
+                
+                } 
+                
+                }
+        
+        }

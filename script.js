@@ -3,16 +3,15 @@ import { weather  } from "./weatherLoading.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     
-    ( async () => {
-        console.log(await weather("Berlin,DE"));
-
-    })()
+   
     
-    console.log(citiesList);
-
     const cityInput = document.querySelector('input[name="location"]');
     const selectionList = document.querySelector('.input-choise ul');
-    console.log(cityInput);
+    const selectCity = document.querySelector("button.choose");
+    const weatherDetails = document.querySelector(".weatherDetails");
+
+
+
 
     cityInput.addEventListener('keyup', ()=>{
          if ( cityInput.value.length ) {
@@ -35,7 +34,36 @@ document.addEventListener("DOMContentLoaded", ()=>{
     })
     
 
+    const fillWeatherDetails= async () => {
+        const data = await weather(cityInput.value.trim());
+        // const {coord:{lat, lon}, wind:{speed, gust, deg}, weather, 
+        //         main:{ temp, temp_min, temp_max, feels_like, grnd_level, 
+        //         humidity, pressure, sea_level}, name, timezone, visibility, 
+        //         sys:{country, sunrise, sunset, type}} = data;
+                
+        weatherDetails.innerHTML = `
+        <p>City: ${data.name}</p>
+        <p>Country: ${data.sys.country}</p>
+        <p>Tempreture:
+        <ul>
+        <li>t<sup>o</sup>: ${data.main.temp}</li>
+        <li>t<sup>o</sup><sub>min</sub>: ${data.main.temp_min}</li>
+        <li>t<sup>o</sup><sub>max</sub>: ${data.main.temp_max}</li>
+        </ul>
+        </p>
+        `;
+        
+    }
+    
+    selectCity.addEventListener('click', ()=>{
 
+        if( citiesList.map(item=>item.location).includes(cityInput.value.trim()) ) {
+            
+            weatherDetails.innerHTML = ""
+
+            fillWeatherDetails();
+        }
+    })
 
 })
 

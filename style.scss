@@ -1,16 +1,67 @@
+body{
+    
+    background: #EC8F5E;
+    color: #001B79;
+    
+    }
+    
+.field-set{
+    display: inline-block;
+    }
+    
+    input[name="location"] {
 
-    input[name="location"]{
+    ~.input-choise {
+        display: none;
+        position: absolute;
+        background: #F3B664;
+        &:focus,
+        &:hover {
+            display: block;
+            }
 
-               ~ ul {
-                display: none;
-               }
-        &:focus{
-
-               ~ ul {
+            li{
+                &:focus,
+                &:hover {
+                    
                     display: block;
+                    background: #F1EB90;
+                    }
                 
-                } 
-                
-                }
-        
+            }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            li {
+                padding: 10px 20px;
+                cursor: pointer;
+                list-style: none;
+            }
         }
+    }
+
+    
+
+    &:focus {
+
+        ~.input-choise {
+            display: block;
+        }
+
+    }
+    .input-choise {
+
+        }
+
+}
+
+.weatherDetails {
+    
+    display: inline-block;
+    background: #9FBB73;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 20px
+
+    }

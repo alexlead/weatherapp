@@ -2,7 +2,7 @@ import { appid } from "./setting.js";
 
 export const weather = async (city) => {
     const baseURL = "https://api.openweathermap.org/data/2.5/weather";
-    const options = {appid: appid,  dt: 'UTC', timezone: 'UTC' , q: city};
+    const options = {appid: appid,  dt: 'UTC', timezone: 'UTC', units: "metric", lang: "en" , q: city};
     let url = new URL(baseURL);
 
     Object.keys(options).forEach(key=>{
